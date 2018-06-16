@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="vue.js"></script>
+    </head>
+<body>
+
+<h1>Vue button exmaple</h1>
+
+<div id="button-example">
+   
+    <button v-on:click="countClicks" v-on:mouseover='msgMouseOver' v-on:mouseout='msgMouseOut'>{{ label }}</button>
+    <p>You have clicked {{counter}} times.</p>
+    <p v-on:mousemove="trackMe">Co-ordinates : {{x}} / {{y}}
+        -<span v-on:mousemove.stop="">DEAD SPOT</span>
+        -<span>Not a Dead spot</span>
+    </p>
+
+    
+</div>
+
+<script>
+    new Vue({
+    el: '#button-example',
+    data:{
+        label: 'Click Me!',
+        counter: 0,
+        x:0,
+        y:0
+    } ,
+    methods:{
+        countClicks: function(){
+            this.counter++;
+        },
+        msgMouseOver:function(){
+            if(this.counter>=6)
+                 this.label= 'Stop clicking!';
+            else
+                this.label="Keep clicking!";
+        },
+        msgMouseOut:function(){
+            this.label ="Come, click me!";
+        },
+        trackMe: function(event){
+            this.x = event.clientX;
+            this.y = event.clientY;
+        }
+    }
+
+    });
+       
+</script>
+
+</body>
+</html>
