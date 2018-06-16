@@ -15,7 +15,7 @@
         -<span v-on:mousemove.stop="">DEAD SPOT</span>
         -<span>Not a Dead spot</span>
     </p>
-
+    <input type="text" v-on:keyup.enter.space='alertMe'>
     
 </div>
 
@@ -44,6 +44,9 @@
         trackMe: function(event){
             this.x = event.clientX;
             this.y = event.clientY;
+        },
+        alertMe: function(){
+            alert('Alert');
         }
     }
 
